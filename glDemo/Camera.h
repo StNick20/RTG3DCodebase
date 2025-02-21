@@ -7,6 +7,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include "ArcballCamera.h"
 
 using namespace std;
 
@@ -78,5 +79,7 @@ protected:
 
 	string m_name;
 	string m_type;
+
+	float aspect_ratio;
 };
 
