@@ -40,8 +40,9 @@ AIMesh* g_creatureMesh = nullptr;
 vec3 g_beastPos = vec3(2.0f, 0.0f, 0.0f);
 float g_beastRotation = 0.0f;
 AIMesh* g_planetMesh = nullptr;
+AIMesh* g_duckMesh = nullptr;
 
-int g_showing = 0;
+int g_showing = 1;
 int g_NumExamples = 3;
 
 //Global Game Object
@@ -133,12 +134,12 @@ int main()
 	g_texDirLightShader = setupShaders(string("Assets\\Shaders\\texture-directional.vert"), string("Assets\\Shaders\\texture-directional.frag"));
 	g_flatColourShader = setupShaders(string("Assets\\Shaders\\flatColour.vert"), string("Assets\\Shaders\\flatColour.frag"));
 
-	g_mainCamera = new ArcballCamera(0.0f, 0.0f, 1.98595f, 55.0f, 1.0f, 0.1f, 500.0f);
+	g_mainCamera = new ArcballCamera(0.0f, 0.0f, 2.0f, 55.0f, 1.0f, 0.1f, 500.0f);
 
 	g_principleAxes = new CGPrincipleAxes();
 
 	g_cube = new Cube();
-
+	
 	g_creatureMesh = new AIMesh(string("Assets\\beast\\beast.obj"));
 	if (g_creatureMesh) {
 		g_creatureMesh->addTexture(string("Assets\\beast\\beast_texture.bmp"), FIF_BMP);
@@ -147,6 +148,12 @@ int main()
 	g_planetMesh = new AIMesh(string("Assets\\gsphere.obj"));
 	if (g_planetMesh) {
 		g_planetMesh->addTexture(string("Assets\\Textures\\Hodges_G_MountainRock1.jpg"), FIF_JPEG);
+	}
+
+	g_duckMesh = new AIMesh(string("Assets\\duck\\rubber_duck_toy_4k.obj"));
+	if (g_duckMesh)
+	{
+		g_duckMesh->addTexture(string("Assets\\duck\\rubber_duck_toy_diff_4k.jpg"), FIF_JPEG);
 	}
 
 	//
@@ -262,8 +269,19 @@ void renderScene()
 			g_planetMesh->setupTextures();
 			g_planetMesh->render();
 		}
+
+		if (g_duckMesh)
+		{
+			Helper::SetUniformLocation(g_texDirLightShader, "modelMatrix", &pLocation);
+			mat4 modelTransform = glm::translate(identity<mat4>(), vec3(0.0, 0.0, 0.0));
+			glUniformMatrix4fv(pLocation, 1, GL_FALSE, (GLfloat*)&modelTransform);
+
+			g_duckMesh->setupTextures();
+			g_duckMesh->render();
+		}
+		break;
 	}
-	break;
+	
 
 	case 1:
 	{
