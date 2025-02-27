@@ -7,7 +7,6 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "ArcballCamera.h"
 
 using namespace std;
 
@@ -16,13 +15,14 @@ using namespace glm;
 class cTransform;
 class Light;
 class Scene;
+class ArcballCamera;
 
 //base class for a camera
 
 class Camera
 {
 public:
-	Camera();
+	Camera(bool arc);
 	virtual ~Camera();
 
 	//initialise the camera _width _height
@@ -77,9 +77,19 @@ protected:
 	float m_near;//near plane distance
 	float m_far;//far plane distance
 
+
+
 	string m_name;
 	string m_type;
 
 	float aspect_ratio;
+
+	//for the arcball camera
+	ArcballCamera* arcCam;
+	float m_theta;
+	float m_phi;
+	float m_radius;
+	float m_aspect;
+
 };
 

@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "CameraFactory.h"
 #include "Camera.h"
+#include "ArcballCamera.h"
 #include "LightFactory.h"
 #include "Light.h"
 #include "ModelFactory.h"

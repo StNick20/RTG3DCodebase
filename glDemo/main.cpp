@@ -42,7 +42,7 @@ float g_beastRotation = 0.0f;
 AIMesh* g_planetMesh = nullptr;
 AIMesh* g_duckMesh = nullptr;
 
-int g_showing = 1;
+int g_showing = 2;
 int g_NumExamples = 3;
 
 //Global Game Object
