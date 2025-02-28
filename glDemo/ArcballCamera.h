@@ -1,14 +1,15 @@
 #pragma once
 
 #include "core.h"
+#include "Camera.h"
 
 // Model an arcball / pivot camera looking at the origin (0, 0, 0).  
 // The camera by default looks down the negative z axis (using a right-handed coordinate system).  
 // Therefore 'forwards' is along the -z axis.  The camera is actually right/left handed agnostic.  
 // The encapsulated frustum however needs to know the differences for the projection matrix and frustum plane calculations
 
-class ArcballCamera {
-
+class ArcballCamera : public Camera
+{
 private:
 
 	float				m_theta, m_phi; // spherical coordinates theta (rotation around the x axis) and phi (rotation around the y axis).  <theta, phi> are stored in degrees.  Zero degree rotation on <theta, phi> places the camera on the +z axis.  A positive phi represents counter-clockwise rotation around the y axis in a right-hand coordinate system.  A positive theta represents a counter-clockwise rotation around the x axis in a right-handed coordinate system
@@ -48,6 +49,7 @@ public:
 	ArcballCamera(float _theta, float _phi, float _radius, float _fovy, float _aspect, float _nearPlane, float _farPlane);
 	// create a camera with orientation <theta, phi> representing Euler angles specified in degrees and Euclidean distance 'init_radius' from the origin.  The frustum / viewplane projection coefficients are defined in init_fovy, specified in degrees spanning the entire vertical field of view angle, init_aspect (w/h ratio), init_nearPlane and init_farPlane.  If init_farPlane = 0.0 (as determined by equalf) then the resulting frustum represents an infinite perspective projection.  This is the default
 
+	void Tick(float _dt, float Aspect_Ratio);
 
 	// Accessor methods for stored properties
 
@@ -58,13 +60,13 @@ public:
 	float getPhi(); 
 
 	// rotate by angles dTheta, dPhi given in degrees
-	void rotateCamera(float _dTheta, float _dPhi);
+	void rotateCamera(float _dTheta, float _dPhi) override;
 
 	// return the camera radius (distance from origin)
 	float getRadius();
 
 	// scale camera radius by s.  s is assumed to lie in the interval (0, +inf].  s < 1.0 reduces the radius while s > 1.0 increases the radius
-	void scaleRadius(float _s);
+	void scaleRadius(float _s) override;
 
 	// increment camera radius by i.  The camera radius cannot have a value < 0.0 so the resulting radius lies in the interval [0, +inf].
 	void incrementRadius(float _i);
@@ -85,7 +87,12 @@ public:
 
 	void setFarPlaneDistance(float _farPlaneDistance);
 	
-	
+	void Load(ifstream& _file) override;
+
+	void Init(float _w, float _h, Scene* _scene) override;
+
+	void SetRenderValues(unsigned int _prog) override;
+
 	// Accessor methods for derived values
 
 	//glm::vec4 getPosition(); // return the camera location in world coordinate space.  The radius of the camera's position in spherical coordinates is the l2 norm of the returned position vector

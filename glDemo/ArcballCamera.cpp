@@ -1,5 +1,9 @@
 
 #include "ArcballCamera.h"
+#include <fstream>
+#include <iostream>
+#include "helper.h"
+#include "stringHelp.h"
 
 using namespace std;
 using namespace glm;
@@ -71,6 +75,34 @@ ArcballCamera::ArcballCamera(float _theta, float _phi, float _radius, float _fov
 	//F.calculateWorldCoordPlanes(C, R);
 }
 
+void ArcballCamera::Init(float _w, float _h, Scene* scene)
+{
+	setAspect(_w / _h);
+	calculateDerivedValues();
+}
+
+void ArcballCamera::Tick(float _dt, float Aspect_Ratio)
+{
+	setAspect(Aspect_Ratio);
+	calculateDerivedValues();
+}
+
+void ArcballCamera::SetRenderValues(unsigned int _prog)
+{
+	GLint loc;
+
+	//matrix for the view transform
+	if (Helper::SetUniformLocation(_prog, "viewMatrix", &loc))
+		glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(viewTransform()));
+
+	//matrix for the projection transform
+	if (Helper::SetUniformLocation(_prog, "projMatrix", &loc))
+		glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(projectionTransform()));
+
+	//the current camera is at this position
+	if (Helper::SetUniformLocation(_prog, "camPos", &loc))
+		glUniform3fv(loc, 1, glm::value_ptr(GetPos()));
+}
 
 #pragma region Accessor methods for stored values
 
@@ -185,3 +217,14 @@ glm::mat4 ArcballCamera::projectionTransform() {
 }
 
 #pragma endregion
+
+void ArcballCamera::Load(ifstream& _file)
+{
+	StringHelp::String(_file, "NAME", m_name);
+	StringHelp::Float(_file, "THETA", m_theta);
+	StringHelp::Float(_file, "PHI", m_phi);
+	StringHelp::Float(_file, "RADIUS", m_radius);
+	StringHelp::Float(_file, "FOV", m_fovY);
+	StringHelp::Float(_file, "NEAR", m_near);
+	StringHelp::Float(_file, "FAR", m_far);
+}

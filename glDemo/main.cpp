@@ -52,6 +52,9 @@ Scene* g_Scene = nullptr;
 const unsigned int g_initWidth = 512;
 const unsigned int g_initHeight = 512;
 
+float _WindowWidth = g_initWidth;
+float _WindowHeight = g_initHeight;
+
 #pragma endregion
 
 
@@ -316,8 +319,8 @@ void updateScene()
 		g_gameClock->tick();
 		tDelta = (float)g_gameClock->gameTimeDelta();
 	}
-
-	g_Scene->Update(tDelta);
+	 
+	g_Scene->Update(tDelta, _WindowWidth, _WindowHeight);
 }
 
 
@@ -334,6 +337,9 @@ void resizeWindow(GLFWwindow* _window, int _width, int _height)
 	}
 
 	glViewport(0, 0, _width, _height);		// Draw into entire window
+
+	_WindowWidth = _width;
+	_WindowHeight = _height;
 }
 
 
@@ -386,6 +392,8 @@ void mouseMoveHandler(GLFWwindow* _window, double _xpos, double _ypos)
 		if (g_mainCamera)
 			g_mainCamera->rotateCamera(-dy, -dx);
 
+		g_Scene->RotateCamera(-dy, -dx);
+
 		g_prevMouseX = _xpos;
 		g_prevMouseY = _ypos;
 	}
@@ -413,9 +421,15 @@ void mouseScrollHandler(GLFWwindow* _window, double _xoffset, double _yoffset) {
 	{
 		if (_yoffset < 0.0)
 			g_mainCamera->scaleRadius(1.1f);
+			
 		else if (_yoffset > 0.0)
 			g_mainCamera->scaleRadius(0.9f);
 	}
+
+	if (_yoffset < 0.0)
+		g_Scene->ScaleCamera(1.1f);
+	else if (_yoffset > 0.0)
+		g_Scene->ScaleCamera(0.9f);
 }
 
 void mouseEnterHandler(GLFWwindow* _window, int _entered) 

@@ -10,11 +10,11 @@ Camera* CameraFactory::makeNewCam(string _type)
 	printf("CAM TYPE: %s \n", _type.c_str());
 	if (_type == "CAMERA")
 	{
-		return new Camera(false);
+		return new Camera();
 	}
 	else if (_type == "ARCBALL_CAMERA")
 	{
-		return new Camera(true);
+		return new ArcballCamera();
 	}
 	else
 	{

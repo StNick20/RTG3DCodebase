@@ -2,7 +2,6 @@
 #include "GameObject.h"
 #include "CameraFactory.h"
 #include "Camera.h"
-#include "ArcballCamera.h"
 #include "LightFactory.h"
 #include "Light.h"
 #include "ModelFactory.h"
@@ -23,7 +22,7 @@ Scene::~Scene()
 }
 
 //tick all my Game Objects, lights and cameras
-void Scene::Update(float _dt)
+void Scene::Update(float _dt, float _screenWidth, float _screenHeight)
 {
 	//update all lights
 	for (list<Light*>::iterator it = m_Lights.begin(); it != m_Lights.end(); it++)
@@ -34,7 +33,7 @@ void Scene::Update(float _dt)
 	//update all cameras
 	for (list<Camera*>::iterator it = m_Cameras.begin(); it != m_Cameras.end(); it++)
 	{
-		(*it)->Tick(_dt);
+		(*it)->Tick(_dt, _screenWidth, _screenHeight);
 	}
 
 	//update all GameObjects
@@ -350,4 +349,20 @@ void Scene::CycleCamera()
 	std::advance(it, m_useCameraIndex);
 
 	m_useCamera = *it;
+}
+
+void Scene::RotateCamera(float dtheta, float dphi)
+{
+	for (list<Camera*>::iterator it = m_Cameras.begin(); it != m_Cameras.end(); it++)
+	{
+		(*it)->rotateCamera(dtheta, dphi);
+	}
+}
+
+void Scene::ScaleCamera(float _s)
+{
+	for (list<Camera*>::iterator it = m_Cameras.begin(); it != m_Cameras.end(); it++)
+	{
+		(*it)->scaleRadius(_s);
+	}
 }

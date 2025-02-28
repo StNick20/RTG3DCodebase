@@ -22,7 +22,7 @@ public:
 	~Scene();
 
 	//tick all GOs
-	void Update(float _dt);
+	void Update(float _dt, float _Width, float _Height);
 
 	//add this GO to my list
 	void AddGameObject(GameObject* _new);
@@ -47,7 +47,10 @@ public:
 	//initialise links between items in the scene
 	void Init();
 
+	//Camera stuff
 	void CycleCamera();
+	void RotateCamera(float dtheta, float dphi);
+	void ScaleCamera(float _s);
 
 protected:
 

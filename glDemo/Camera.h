@@ -15,14 +15,13 @@ using namespace glm;
 class cTransform;
 class Light;
 class Scene;
-class ArcballCamera;
 
 //base class for a camera
 
 class Camera
 {
 public:
-	Camera(bool arc);
+	Camera();
 	virtual ~Camera();
 
 	//initialise the camera _width _height
@@ -32,7 +31,7 @@ public:
 
 	//tick this camera
 	//TODO: possibly pass keyboard / mouse stuff down here for player controls?
-	virtual void Tick(float _dt);
+	virtual void Tick(float _dt, float _screenWidth, float _screenHeight);
 
 	//load camera info from the mainfest
 	virtual void Load(ifstream& _file);
@@ -61,6 +60,9 @@ public:
 	//set up shader values for when using this camera
 	virtual void SetRenderValues(unsigned int _prog);
 
+	virtual void scaleRadius(float _s);
+	virtual void rotateCamera(float _T, float _Y);
+
 protected:
 
 	//standard transforms needed to render with this a basic camera
@@ -83,13 +85,5 @@ protected:
 	string m_type;
 
 	float aspect_ratio;
-
-	//for the arcball camera
-	ArcballCamera* arcCam;
-	float m_theta;
-	float m_phi;
-	float m_radius;
-	float m_aspect;
-
 };
 
