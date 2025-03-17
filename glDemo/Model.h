@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Core.h"
 
 using namespace std;
 
@@ -12,11 +13,18 @@ public:
 	virtual ~Model();
 
 	virtual void Load(ifstream& _file);
-	virtual void Render() {};
+	virtual void Render();
 
 	string GetName() { return m_name; }
 
 protected:
 	string m_name;
 	string m_type;
+
+	GLuint				m_numFaces = 0;
+	GLuint				m_vao = 0;
+
+	GLuint				m_vertexBuffer;
+	GLuint				m_colourBuffer;
+	GLuint				m_indexBuffer;
 };

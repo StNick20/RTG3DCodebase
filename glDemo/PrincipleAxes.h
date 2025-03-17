@@ -1,24 +1,16 @@
 #pragma once
 
 #include "core.h"
+#include "Model.h"
 
 
 
-class CGPrincipleAxes  {
-
-private:
-
-	GLuint				m_numFaces = 0;
-	GLuint				m_vao = 0;
-
-	GLuint				m_vertexBuffer;
-	GLuint				m_colourBuffer;
-	GLuint				m_indexBuffer;
-
+class CGPrincipleAxes : public Model {
 public:
 
 	CGPrincipleAxes();
 	~CGPrincipleAxes();
 
-	void render(bool _showZAxis = true);
+	void Load(ifstream& _file);
+	void Render(/*bool _showZAxis = true*/);
 };

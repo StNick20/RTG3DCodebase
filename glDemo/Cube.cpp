@@ -1,5 +1,5 @@
 #include "Cube.h"
-
+#include "stringHelp.h"
 
 using namespace std;
 using namespace glm;
@@ -120,6 +120,8 @@ static unsigned int indexArray[] = {
 
 Cube::Cube() {
 
+	m_type = "CUBE";
+
 	m_numFaces = 6 * 2;
 
 	glGenVertexArrays(1, &m_vao);
@@ -159,8 +161,12 @@ Cube::~Cube() {
 	glDeleteBuffers(1, &m_indexBuffer);
 }
 
+void Cube::Load(ifstream& _file)
+{
+	StringHelp::String(_file, "NAME", m_name);
+}
 
-void Cube::render() {
-	glBindVertexArray(m_vao);
-	glDrawElements(GL_TRIANGLES, m_numFaces * 3 , GL_UNSIGNED_INT, (const GLvoid*)0);
+void Cube::Render()
+{
+	Model::Render();
 }

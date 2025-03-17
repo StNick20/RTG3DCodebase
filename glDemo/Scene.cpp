@@ -33,7 +33,7 @@ void Scene::Update(float _dt, float _screenWidth, float _screenHeight)
 	//update all cameras
 	for (list<Camera*>::iterator it = m_Cameras.begin(); it != m_Cameras.end(); it++)
 	{
-		(*it)->Tick(_dt, _screenWidth, _screenHeight);
+		(*it)->Tick(_dt, _screenWidth / _screenHeight);
 	}
 
 	//update all GameObjects
@@ -303,7 +303,6 @@ void Scene::Load(ifstream& _file)
 		_file.ignore(256, '\n');
 		cout << "}\n";
 	}
-
 
 }
 

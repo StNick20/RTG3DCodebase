@@ -1,4 +1,5 @@
 #include "PrincipleAxes.h"
+#include "StringHelp.h"
 
 
 using namespace std;
@@ -76,7 +77,7 @@ static unsigned int indexArray[] = {
 
 CGPrincipleAxes::CGPrincipleAxes() {
 
-
+	m_type = "AXES";
 	m_numFaces = 10;
 
 	glGenVertexArrays(1, &m_vao);
@@ -115,8 +116,11 @@ CGPrincipleAxes::~CGPrincipleAxes() {
 	glDeleteBuffers(1, &m_indexBuffer);
 }
 
+void CGPrincipleAxes::Load(ifstream& _file)
+{
+	StringHelp::String(_file, "NAME", m_name);
+}
 
-void CGPrincipleAxes::render(bool _showZAxis) {
-	glBindVertexArray(m_vao);
-	glDrawElements(GL_LINES, m_numFaces * 3, GL_UNSIGNED_INT, (const GLvoid*)0);
+void CGPrincipleAxes::Render(/*bool _showZAxis*/) {
+	Model::Render();
 }
