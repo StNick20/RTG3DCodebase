@@ -17,6 +17,4 @@ void Model::Load(ifstream& _file)
 
 void Model::Render()
 {
-	glBindVertexArray(m_vao);
-	glDrawElements(GL_TRIANGLES, m_numFaces * 3, GL_UNSIGNED_INT, (const GLvoid*)0);
 }

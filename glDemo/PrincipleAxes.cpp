@@ -122,5 +122,6 @@ void CGPrincipleAxes::Load(ifstream& _file)
 }
 
 void CGPrincipleAxes::Render(/*bool _showZAxis*/) {
-	Model::Render();
+	glBindVertexArray(m_vao);
+	glDrawElements(GL_TRIANGLES, m_numFaces * 3, GL_UNSIGNED_INT, (const GLvoid*)0);	glDrawElements(GL_LINES, m_numFaces * 3, GL_UNSIGNED_INT, (const GLvoid*)0);
 }
