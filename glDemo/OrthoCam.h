@@ -5,8 +5,8 @@
 class OrthoCam : public Camera
 {
 private:
-
-
+	float m_orthoWidth;
+	float m_orthoHeight;
 
 public:
 
