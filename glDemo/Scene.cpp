@@ -352,16 +352,15 @@ void Scene::CycleCamera()
 
 void Scene::RotateCamera(float dtheta, float dphi)
 {
-	for (list<Camera*>::iterator it = m_Cameras.begin(); it != m_Cameras.end(); it++)
-	{
-		(*it)->rotateCamera(dtheta, dphi);
-	}
+	m_useCamera->rotateCamera(dtheta, dphi);
 }
 
 void Scene::ScaleCamera(float _s)
 {
-	for (list<Camera*>::iterator it = m_Cameras.begin(); it != m_Cameras.end(); it++)
-	{
-		(*it)->scaleRadius(_s);
-	}
+	m_useCamera->scaleRadius(_s);
+}
+
+void Scene::MoveCamera(glm::vec3 _d)
+{
+	m_useCamera->Move(_d);
 }

@@ -362,6 +362,18 @@ void keyboardHandler(GLFWwindow* _window, int _key, int _scancode, int _action, 
 		case GLFW_KEY_Q:
 			g_Scene->CycleCamera();
 			break;
+		case GLFW_KEY_W:
+			g_Scene->MoveCamera(glm::vec3(-1, 0, 0));
+			break;
+		case GLFW_KEY_A:
+			g_Scene->MoveCamera(glm::vec3(0, 0, 1));
+			break;
+		case GLFW_KEY_S:
+			g_Scene->MoveCamera(glm::vec3(1, 0, 0));
+			break;
+		case GLFW_KEY_D:
+			g_Scene->MoveCamera(glm::vec3(0, 0, -1));
+			break;
 		default:
 		{
 		}

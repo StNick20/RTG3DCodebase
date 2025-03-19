@@ -51,7 +51,7 @@ public:
 	string GetName() { return m_name; }
 	void SetName(string _name) { m_name = _name; }
 
-	void Move(glm::vec3 _d) { m_pos += _d; }
+	virtual void Move(glm::vec3 _d) { m_pos += _d; }
 
 	//where am I looking at
 	vec3 GetLookAt() { return m_lookAt; }
@@ -78,7 +78,6 @@ protected:
 	float m_fov; //field of view
 	float m_near;//near plane distance
 	float m_far;//far plane distance
-
 
 
 	string m_name;

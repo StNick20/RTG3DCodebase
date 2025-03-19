@@ -51,6 +51,7 @@ public:
 	void CycleCamera();
 	void RotateCamera(float dtheta, float dphi);
 	void ScaleCamera(float _s);
+	void MoveCamera(glm::vec3 _d);
 
 protected:
 
