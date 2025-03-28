@@ -2,7 +2,6 @@
 #include <assert.h>
 #include "Light.h"
 #include "DirectionLight.h"
-#include "PointLight.h"
 
 Light* LightFactory::makeNewLight(std::string _type)
 {
@@ -14,10 +13,6 @@ Light* LightFactory::makeNewLight(std::string _type)
 	else if (_type == "DIRECTION")
 	{
 		return new DirectionLight();
-	}
-	else if (_type == "POINT")
-	{
-		return new PointLight();
 	}
 	else
 	{
