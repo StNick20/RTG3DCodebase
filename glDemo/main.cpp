@@ -346,8 +346,8 @@ void resizeWindow(GLFWwindow* _window, int _width, int _height)
 // Function to call to handle keyboard input
 void keyboardHandler(GLFWwindow* _window, int _key, int _scancode, int _action, int _mods)
 {
-	if (_action == GLFW_PRESS) {
-
+	if (_action == GLFW_PRESS || _action == GLFW_REPEAT) {
+		
 		// check which key was pressed...
 		switch (_key)
 		{
@@ -363,16 +363,16 @@ void keyboardHandler(GLFWwindow* _window, int _key, int _scancode, int _action, 
 			g_Scene->CycleCamera();
 			break;
 		case GLFW_KEY_W:
-			g_Scene->MoveCamera(glm::vec3(-1, 0, 0));
+			g_Scene->MoveCamera(glm::vec3(0.5, 0, 0));
 			break;
 		case GLFW_KEY_A:
-			g_Scene->MoveCamera(glm::vec3(0, 0, 1));
+			g_Scene->MoveCamera(glm::vec3(0, 0, -0.5));
 			break;
 		case GLFW_KEY_S:
-			g_Scene->MoveCamera(glm::vec3(1, 0, 0));
+			g_Scene->MoveCamera(glm::vec3(-0.5, 0, 0));
 			break;
 		case GLFW_KEY_D:
-			g_Scene->MoveCamera(glm::vec3(0, 0, -1));
+			g_Scene->MoveCamera(glm::vec3(0, 0, 0.5));
 			break;
 		default:
 		{

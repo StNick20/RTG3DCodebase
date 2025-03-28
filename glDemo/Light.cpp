@@ -26,6 +26,8 @@ void Light::Load(ifstream& _file)
 /////////////////////////////////////////////////////////////////////////////////////
 void Light::Tick(float _dt)
 {
+	//day night cycle?
+	
 }
 
 //send values to the shaders to allow the use of this light
