@@ -10,6 +10,8 @@ Light::Light()
 	m_pos.x = 0.0f;
 	m_pos.y = 0.0f;
 	m_pos.z = 0.0f;
+
+	time = 12.0f;
 }
 
 void Light::Load(ifstream& _file)
@@ -26,8 +28,36 @@ void Light::Load(ifstream& _file)
 /////////////////////////////////////////////////////////////////////////////////////
 void Light::Tick(float _dt)
 {
-	//day night cycle?
-	
+	//day night cycle
+	time += _dt;
+
+	if (time > 24.0f)
+		time = 0.0f;
+
+	if ((time > 22.0f && time < 24.0f) || (time > 0.0f && time < 4.0f))
+	{
+		m_amb = glm::vec3(0.1, 0.1, 0.1);
+	}
+	else if (time > 4.0f && time < 7.0f)
+	{
+		m_amb = glm::vec3(0.3, 0.3, 0.3);
+	}
+	else if (time > 7.0f && time < 11.0f)
+	{
+		m_amb = glm::vec3(0.6, 0.6, 0.6);
+	}
+	else if (time > 11.0f && time < 14.0f)
+	{
+		m_amb = glm::vec3(1.0, 1.0, 1.0);
+	}
+	else if (time > 14.0f && time < 17.0f)
+	{
+		m_amb = glm::vec3(0.6, 0.6, 0.6);
+	}
+	else if (time > 17.0f && time < 22.0f)
+	{
+		m_amb = glm::vec3(0.3, 0.3, 0.3);
+	}
 }
 
 //send values to the shaders to allow the use of this light

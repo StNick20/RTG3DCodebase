@@ -52,3 +52,13 @@ void GameObject::Init(Scene* _scene)
 {
 	//I have nothing to link up to
 }
+
+void GameObject::Move(glm::vec3 _pos)
+{
+	m_pos = _pos;
+}
+
+void GameObject::Rotate(glm::vec3 _rot)
+{
+	m_rot = _rot;
+}

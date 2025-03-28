@@ -1,5 +1,6 @@
 #include "FirstPersonCamera.h"
-#include "ArcballCamera.h"
+#include "Scene.h"
+#include "GameObject.h"
 
 FirstPersonCamera::FirstPersonCamera()
 {
@@ -13,8 +14,8 @@ FirstPersonCamera::~FirstPersonCamera()
 void FirstPersonCamera::Load(ifstream& _file)
 {
 	ArcballCamera::Load(_file);
-	StringHelp::Float3(_file, "POS", m_pos.x, m_pos.y, m_pos.z);
-
+	StringHelp::String(_file, "OBJECT", m_objectName);
+	StringHelp::Float3(_file, "OFFSET", m_offset.x, m_offset.y, m_offset.z);
 }
 
 void FirstPersonCamera::Tick(float dt, float aspectRatio)
@@ -34,6 +35,9 @@ void FirstPersonCamera::Tick(float dt, float aspectRatio)
 void FirstPersonCamera::Init(float _w, float _h, Scene* scene)
 {
 	ArcballCamera::Init(_w, _h, scene);
+	m_object = scene->GetGameObject(m_objectName);
+
+	m_pos = m_object->GetPos() + m_offset;
 }
 
 void FirstPersonCamera::rotateCamera(float _dTheta, float _dPhi)
@@ -47,6 +51,9 @@ void FirstPersonCamera::rotateCamera(float _dTheta, float _dPhi)
 		_dTheta = -65;
 
 	calculateDerivedValues();	
+
+	//this does not work :(
+	m_object->Rotate(GetForward());
 }
 
 void FirstPersonCamera::Move(glm::vec3 _d)
@@ -62,6 +69,8 @@ void FirstPersonCamera::Move(glm::vec3 _d)
 
 	m_pos += movement;
 	m_lookAt += movement;
+
+	m_object->Move(m_pos - m_offset);
 }
 
 glm::vec3 FirstPersonCamera::GetForward()
@@ -77,3 +86,4 @@ glm::vec3 FirstPersonCamera::GetRight()
 
 	return right;
 }
+

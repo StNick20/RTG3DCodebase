@@ -3,9 +3,16 @@
 #include "ArcballCamera.h"
 #include "Camera.h"
 
+class GameObject;
 
 class FirstPersonCamera : public ArcballCamera
 {
+protected:
+	GameObject* m_object;
+	string m_objectName;
+
+	glm::vec3 m_offset;
+
 public:
 	FirstPersonCamera();
 	~FirstPersonCamera();
@@ -22,4 +29,6 @@ public:
 	
 	glm::vec3 GetForward();
 	glm::vec3 GetRight();
+
+
 };
