@@ -1,10 +1,11 @@
 #include "FirstPersonCamera.h"
 #include "Scene.h"
 #include "GameObject.h"
+#include "ArcballCamera.h"
 
 FirstPersonCamera::FirstPersonCamera()
 {
-
+	m_type = "FPC";
 }
 
 FirstPersonCamera::~FirstPersonCamera()
@@ -20,7 +21,16 @@ void FirstPersonCamera::Load(ifstream& _file)
 
 void FirstPersonCamera::Tick(float dt, float aspectRatio)
 {
+	setAspect(aspectRatio);
 
+	const float theta_ = glm::radians<float>(m_theta);
+	const float phi_ = glm::radians<float>(m_phi);
+
+	m_lookAt = m_pos + glm::vec3(sinf(phi_) * cosf(theta_), sinf(theta_), cosf(phi_) * cosf(theta_));
+
+	// calculate view and projection transform matrices
+	m_viewMatrix = glm::lookAt(m_pos, m_lookAt, vec3(0, 1, 0));
+	m_projectionMatrix = glm::perspective(glm::radians<float>(m_fovY), m_aspect, m_nearPlane, m_farPlane);
 }
 
 void FirstPersonCamera::Init(float _w, float _h, Scene* scene)

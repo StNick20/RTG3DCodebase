@@ -1,10 +1,11 @@
 #pragma once
 #include "core.h"
+#include "ArcballCamera.h"
 #include "Camera.h"
 
 class GameObject;
 
-class FirstPersonCamera : public Camera
+class FirstPersonCamera : public ArcballCamera
 {
 protected:
 	GameObject* m_object;
@@ -22,7 +23,8 @@ public:
 
 	void Load(ifstream& _file);
 
-
+	void rotateCamera(float _dTheta, float _dPhi) override;
+	
 	void Move(glm::vec3 _d);
 	
 	glm::vec3 GetForward();
