@@ -24,13 +24,13 @@ public:
 protected:
 	vec3 m_direction;
 
-
+	//for day night cycle
 	float time;
 
 	vec3 m_OriginalCol;
 
-	//for day/night cycle
-	const float maxTime = 300;
+	//set max time for day night cycle too 10 minutes
+	const float maxTime = 600;
 	const float halfTime = maxTime / 2.0f;
 };
 
