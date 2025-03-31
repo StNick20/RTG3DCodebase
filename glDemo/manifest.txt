@@ -93,8 +93,9 @@ NAME: DUCK
 FILE: Assets\\duck\rubber_duck_toy_4k.obj
 }
 {
-TYPE: CUBE
+TYPE: AI
 NAME: CUBE
+FILE: Assets\\cube_highpoly.obj
 }
 {
 TYPE: AXES
@@ -190,5 +191,5 @@ SCALE: 10.0 10.0 10.0
 ROTINC: 0.0 0.0 0.0
 MODEL: CUBE
 TEXTURE: ROCK
-SHADER: FLAT
+SHADER: TEXDIR
 }

@@ -25,22 +25,22 @@ double				g_prevMouseX, g_prevMouseY;
 
 // Global Example objects
 // shouldn't really be anything in here for the final submission
-ArcballCamera* g_mainCamera = nullptr;
-CGPrincipleAxes* g_principleAxes = nullptr;
-Cube* g_cube = nullptr;
-
-GLuint g_flatColourShader;
-
-GLuint g_texDirLightShader;
-vec3 g_DLdirection = vec3(0.0f, 1.0f, 0.0f);
-vec3 g_DLcolour = vec3(1.0f, 1.0f, 1.0f);
-vec3 g_DLambient = vec3(0.2f, 0.2f, 0.2f);
-
-AIMesh* g_creatureMesh = nullptr;
-vec3 g_beastPos = vec3(2.0f, 0.0f, 0.0f);
-float g_beastRotation = 0.0f;
-AIMesh* g_planetMesh = nullptr;
-AIMesh* g_duckMesh = nullptr;
+//ArcballCamera* g_mainCamera = nullptr;
+//CGPrincipleAxes* g_principleAxes = nullptr;
+//Cube* g_cube = nullptr;
+//
+//GLuint g_flatColourShader;
+//
+//GLuint g_texDirLightShader;
+//vec3 g_DLdirection = vec3(0.0f, 1.0f, 0.0f);
+//vec3 g_DLcolour = vec3(1.0f, 1.0f, 1.0f);
+//vec3 g_DLambient = vec3(0.2f, 0.2f, 0.2f);
+//
+//AIMesh* g_creatureMesh = nullptr;
+//vec3 g_beastPos = vec3(2.0f, 0.0f, 0.0f);
+//float g_beastRotation = 0.0f;
+//AIMesh* g_planetMesh = nullptr;
+//AIMesh* g_duckMesh = nullptr;
 
 int g_showing = 2;
 int g_NumExamples = 3;
@@ -134,7 +134,7 @@ int main()
 	// Setup the Example Objects
 	//
 
-	g_texDirLightShader = setupShaders(string("Assets\\Shaders\\texture-directional.vert"), string("Assets\\Shaders\\texture-directional.frag"));
+	/*g_texDirLightShader = setupShaders(string("Assets\\Shaders\\texture-directional.vert"), string("Assets\\Shaders\\texture-directional.frag"));
 	g_flatColourShader = setupShaders(string("Assets\\Shaders\\flatColour.vert"), string("Assets\\Shaders\\flatColour.frag"));
 
 	g_mainCamera = new ArcballCamera(0.0f, 0.0f, 2.0f, 55.0f, 1.0f, 0.1f, 500.0f);
@@ -157,7 +157,7 @@ int main()
 	if (g_duckMesh)
 	{
 		g_duckMesh->addTexture(string("Assets\\duck\\rubber_duck_toy_diff_4k.jpg"), FIF_JPEG);
-	}
+	}*/
 
 	//
 	//Set up Scene class
@@ -210,10 +210,10 @@ void renderScene()
 	// Clear the rendering window
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	mat4 cameraTransform = g_mainCamera->projectionTransform() * g_mainCamera->viewTransform();
+	//mat4 cameraTransform = g_mainCamera->projectionTransform() * g_mainCamera->viewTransform();
 
-	mat4 cameraProjection = g_mainCamera->projectionTransform();
-	mat4 cameraView = g_mainCamera->viewTransform() * translate(identity<mat4>(), -g_beastPos);
+	//mat4 cameraProjection = g_mainCamera->projectionTransform();
+	//mat4 cameraView = g_mainCamera->viewTransform() * translate(identity<mat4>(), -g_beastPos);
 
 #// Render principle axes - no modelling transforms so just use cameraTransform
 	//if (true)
@@ -331,10 +331,10 @@ void updateScene()
 // Function to call when window resized
 void resizeWindow(GLFWwindow* _window, int _width, int _height)
 {
-	if (g_mainCamera) {
+	/*if (g_mainCamera) {
 
 		g_mainCamera->setAspect((float)_width / (float)_height);
-	}
+	}*/
 
 	glViewport(0, 0, _width, _height);		// Draw into entire window
 
@@ -401,8 +401,8 @@ void mouseMoveHandler(GLFWwindow* _window, double _xpos, double _ypos)
 		float dx = float(_xpos - g_prevMouseX);// *360.0f * tDelta;
 		float dy = float(_ypos - g_prevMouseY);// *360.0f * tDelta;
 
-		if (g_mainCamera)
-			g_mainCamera->rotateCamera(-dy, -dx);
+		//if (g_mainCamera)
+		//	g_mainCamera->rotateCamera(-dy, -dx);
 
 		g_Scene->RotateCamera(-dy, -dx);
 
@@ -429,14 +429,14 @@ void mouseButtonHandler(GLFWwindow* _window, int _button, int _action, int _mods
 
 void mouseScrollHandler(GLFWwindow* _window, double _xoffset, double _yoffset) {
 
-	if (g_mainCamera) 
+	/*if (g_mainCamera) 
 	{
 		if (_yoffset < 0.0)
 			g_mainCamera->scaleRadius(1.1f);
 			
 		else if (_yoffset > 0.0)
 			g_mainCamera->scaleRadius(0.9f);
-	}
+	}*/
 
 	if (_yoffset < 0.0)
 		g_Scene->ScaleCamera(1.1f);
