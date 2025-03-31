@@ -15,6 +15,7 @@ protected:
 
 public:
 	FirstPersonCamera();
+	FirstPersonCamera(string m_name, GameObject* m_object, glm::vec3 m_offset);
 	~FirstPersonCamera();
 
 	void Init(float _w, float _h, Scene* _scene);

@@ -1,12 +1,10 @@
 #pragma once
 #include "GameObject.h"
 class Model;
-
 //replicate the examples from the main.cpp
 //each Game Object has a Mesh, a texture and a shader
 //which it uses to render itself
-class ExampleGO :
-	public GameObject
+class ExampleGO : public GameObject
 {
 public:
 	ExampleGO();
@@ -22,7 +20,7 @@ public:
 	virtual void PreRender();
 	virtual void Render();
 
-	virtual void Init(Scene* _scene);
+	virtual void Init(Scene* _scene, float _Width, float _Height);
 
 protected:
 

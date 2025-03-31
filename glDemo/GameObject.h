@@ -33,7 +33,7 @@ public:
 	glm::vec3 GetPos() { return m_pos; }
 
 	//scene maybe needed for more involved cameras to connect to relvant GOs and lights/shaders etc
-	virtual void Init(Scene* _scene);
+	virtual void Init(Scene* _scene, float _Width, float _Height);
 
 	//this GameObject should be drawn in THIS render pass
 	RenderPass GetRP() { return m_RP; }

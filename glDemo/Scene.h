@@ -26,6 +26,8 @@ public:
 
 	//add this GO to my list
 	void AddGameObject(GameObject* _new);
+	//add this camera to my list
+	void AddCamera(Camera* _new);
 
 	//return a pointer to a given thing by its name
 	GameObject* GetGameObject(string _GOName);
@@ -45,7 +47,7 @@ public:
 	void Load(ifstream& _file);
 
 	//initialise links between items in the scene
-	void Init();
+	void Init(float _Width, float _Height);
 
 	//Camera stuff
 	void CycleCamera();

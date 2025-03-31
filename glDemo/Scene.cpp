@@ -48,6 +48,12 @@ void Scene::AddGameObject(GameObject* _new)
 	m_GameObjects.push_back(_new);
 }
 
+void Scene::AddCamera(Camera* _new)
+{
+	m_Cameras.push_back(_new);
+	m_numCameras++;
+}
+
 //I want THAT Game Object by name
 GameObject* Scene::GetGameObject(string _GOName)
 {
@@ -306,14 +312,14 @@ void Scene::Load(ifstream& _file)
 
 }
 
-void Scene::Init()
+void Scene::Init(float _Width, float _Height)
 {
 	//initialise all cameras
 	//scene is passed down here to allow for linking of cameras to game objects
 	int count = 0;
 	for (list<Camera*>::iterator it = m_Cameras.begin(); it != m_Cameras.end(); ++it)
 	{
-		(*it)->Init(100, 100, this);// TODO: set correct screen sizes here
+		(*it)->Init(_Width, _Height, this);// TODO: set correct screen sizes here
 
 		//if a camera is called MAIN
 		//this will be the starting camera used
@@ -335,7 +341,7 @@ void Scene::Init()
 	//set up links between everything and GameObjects
 	for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
 	{
-		(*it)->Init(this);
+		(*it)->Init(this, _Width, _Height);
 	}
 }
 

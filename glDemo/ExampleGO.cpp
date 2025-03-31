@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "FirstPersonCamera.h"
 
 ExampleGO::ExampleGO()
 {
@@ -19,7 +20,6 @@ void ExampleGO::Load(ifstream& _file)
 	StringHelp::String(_file, "MODEL", m_ModelName);
 	StringHelp::String(_file, "TEXTURE", m_TexName);
 	StringHelp::String(_file, "SHADER", m_ShaderName);
-
 }
 
 void ExampleGO::Tick(float _dt)
@@ -48,7 +48,7 @@ void ExampleGO::Render()
 	m_model->Render();
 }
 
-void ExampleGO::Init(Scene* _scene)
+void ExampleGO::Init(Scene* _scene, float _Width, float _Height)
 {
 	m_ShaderProg = _scene->GetShader(m_ShaderName)->GetProg();
 	m_texture = _scene->GetTexture(m_TexName)->GetTexID();

@@ -169,7 +169,7 @@ int main()
 	manifest.open("manifest.txt");
 
 	g_Scene->Load(manifest);
-	g_Scene->Init();
+	g_Scene->Init(_WindowWidth, _WindowHeight);
 
 	manifest.close();
 

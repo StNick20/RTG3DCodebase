@@ -48,7 +48,7 @@ void GameObject::Render()
 	//I have nothing to draw
 }
 
-void GameObject::Init(Scene* _scene)
+void GameObject::Init(Scene* _scene, float _Width, float _Height)
 {
 	//I have nothing to link up to
 }
