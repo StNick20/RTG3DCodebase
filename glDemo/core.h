@@ -14,6 +14,7 @@
 #include "GLFW/glfw3.h"
 
 #include <Windows.h>
+#include <algorithm>
 #include <stdio.h>
 #include <assert.h>
 #include <math.h>

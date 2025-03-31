@@ -48,5 +48,4 @@ protected:
 	vec3 m_col; // colour of the light
 	vec3 m_amb; // ambient colour of the light
 
-	float time;
 };
