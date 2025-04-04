@@ -6,6 +6,7 @@
 
 using namespace std;
 class Scene;
+class Collider;
 
 using namespace glm;
 
@@ -31,6 +32,8 @@ public:
 	string GetName() { return m_name; }
 	GLuint GetShaderProg() { return m_ShaderProg; }
 	glm::vec3 GetPos() { return m_pos; }
+	glm::vec3 GetScale() { return m_scale; }
+	Collider* GetCollider() { return m_collider; }
 
 	//scene maybe needed for more involved cameras to connect to relvant GOs and lights/shaders etc
 	virtual void Init(Scene* _scene, float _Width, float _Height);
@@ -58,5 +61,7 @@ protected:
 	GLuint m_ShaderProg;
 
 	RenderPass m_RP = RP_OPAQUE;
+
+	Collider* m_collider;
 };
 

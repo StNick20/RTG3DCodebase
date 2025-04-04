@@ -1,9 +1,5 @@
 #pragma once
 #include "core.h"
-#include <list>
-#include <string>
-#include <fstream>
-#include <iostream>
 
 using namespace std;
 
@@ -13,6 +9,7 @@ class Light;
 class Model;
 class Texture;
 class Shader;
+class Collider;
 
 //Note quite a proper scene graph but this contains data structures for all of our bits and pieces we want to draw
 class Scene
@@ -36,6 +33,7 @@ public:
 	Texture* GetTexture(string _texName);
 	Model* GetModel(string _modelName);
 	Shader* GetShader(string _shaderName);
+	std::list<Collider*> GetColliders() { return m_Colliders; }
 
 	//Render Everything
 	void Render();
@@ -64,12 +62,14 @@ protected:
 	int m_numModels = 0;
 	int m_numTextures = 0;
 	int m_numShaders = 0;
-	std::list<Camera*>    m_Cameras;
-	std::list<Light*>    m_Lights;
+	int m_numColliders = 0;
+	std::list<Camera*>		m_Cameras;
+	std::list<Light*>		m_Lights;
 	std::list<Model*>		m_Models;
 	std::list<Texture*>		m_Textures;
 	std::list<Shader*>		m_Shaders;
-	std::list<GameObject*> m_GameObjects;
+	std::list<GameObject*>	m_GameObjects;
+	std::list<Collider*>	m_Colliders;
 
 	Camera* m_useCamera = nullptr; //current main camera in use
 	int m_useCameraIndex = 0;

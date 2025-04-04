@@ -141,6 +141,7 @@
     <ClInclude Include="ArcballCamera.h" />
     <ClInclude Include="CameraFactory.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Collider.h" />
     <ClInclude Include="FirstPersonCamera.h" />
     <ClInclude Include="GOCam.h" />
     <ClInclude Include="Light.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="ArcballCamera.cpp" />
     <ClCompile Include="CameraFactory.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Collider.cpp" />
     <ClCompile Include="FirstPersonCamera.cpp" />
     <ClCompile Include="GOCam.cpp" />
     <ClCompile Include="Light.cpp" />

@@ -9,6 +9,7 @@
 #include "Texture.h"
 #include "Shader.h"
 #include "GameObjectFactory.h"
+#include "Collider.h"
 #include <assert.h>
 
 Scene::Scene()
@@ -41,6 +42,8 @@ void Scene::Update(float _dt, float _screenWidth, float _screenHeight)
 	{
 		(*it)->Tick(_dt);
 	}
+
+
 }
 
 void Scene::AddGameObject(GameObject* _new)
@@ -304,6 +307,10 @@ void Scene::Load(ifstream& _file)
 		newGO->Load(_file);
 
 		m_GameObjects.push_back(newGO);
+		
+		//colliders for the gameObject created with it so get it and add it to a list now
+		m_Colliders.push_back(newGO->GetCollider());
+		m_numColliders++;
 
 		//skip }
 		_file.ignore(256, '\n');
@@ -342,7 +349,9 @@ void Scene::Init(float _Width, float _Height)
 	for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
 	{
 		(*it)->Init(this, _Width, _Height);
+		(*it)->GetCollider()->Init(this, (*it)->GetPos(), (*it)->GetScale());
 	}
+
 }
 
 void Scene::CycleCamera()

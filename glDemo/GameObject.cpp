@@ -2,12 +2,15 @@
 #include "GameObject.h"
 #include "stringHelp.h"
 #include "helper.h"
+#include "Collider.h"
 
 using namespace glm;
 
 GameObject::GameObject()
 {
 	m_type = "GAMEOBJECT";
+
+	m_collider = new Collider;
 }
 
 GameObject::~GameObject()
@@ -33,6 +36,8 @@ void GameObject::Tick(float _dt)
 	m_worldMatrix = glm::rotate(m_worldMatrix, glm::radians(m_rot.z), glm::vec3(0.0f, 0.0f, 1.0f));
 
 	m_worldMatrix = glm::scale(m_worldMatrix, glm::vec3(m_scale));
+
+	m_collider->SetPos(this->GetPos());
 }
 
 void GameObject::PreRender()
@@ -55,6 +60,7 @@ void GameObject::Init(Scene* _scene, float _Width, float _Height)
 
 void GameObject::Move(glm::vec3 _pos)
 {
+
 	m_pos = _pos;
 }
 

@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "GameObject.h"
 #include "ArcballCamera.h"
+#include "Collider.h"
 
 FirstPersonCamera::FirstPersonCamera()
 {
@@ -87,6 +88,13 @@ void FirstPersonCamera::Move(glm::vec3 _d)
 	m_lookAt += movement;
 
 	m_object->Move(m_pos - m_offset);
+
+	if (m_object->GetCollider()->checkColliders())
+	{
+		m_pos -= movement;
+		m_lookAt -= movement;
+		m_object->Move(m_pos - m_offset);
+	}
 }
 
 glm::vec3 FirstPersonCamera::GetForward()
