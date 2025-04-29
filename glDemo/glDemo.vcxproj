@@ -169,6 +169,7 @@
     <ClInclude Include="stringHelp.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureLoader.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AIMesh.cpp" />
@@ -198,6 +199,7 @@
     <ClCompile Include="shader_setup.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureLoader.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="manifest.txt" />
