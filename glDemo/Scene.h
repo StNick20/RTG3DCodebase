@@ -10,6 +10,7 @@ class Model;
 class Texture;
 class Shader;
 class Collider;
+class World;
 
 //Note quite a proper scene graph but this contains data structures for all of our bits and pieces we want to draw
 class Scene
@@ -63,6 +64,7 @@ protected:
 	int m_numTextures = 0;
 	int m_numShaders = 0;
 	int m_numColliders = 0;
+	int m_numDungeon = 0;
 	std::list<Camera*>		m_Cameras;
 	std::list<Light*>		m_Lights;
 	std::list<Model*>		m_Models;
@@ -70,6 +72,7 @@ protected:
 	std::list<Shader*>		m_Shaders;
 	std::list<GameObject*>	m_GameObjects;
 	std::list<Collider*>	m_Colliders;
+	std::list<World*>		m_Dungeons;
 
 	Camera* m_useCamera = nullptr; //current main camera in use
 	int m_useCameraIndex = 0;

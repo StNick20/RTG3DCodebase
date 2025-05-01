@@ -10,6 +10,7 @@
 #include "Shader.h"
 #include "GameObjectFactory.h"
 #include "Collider.h"
+#include "World.h"
 #include <assert.h>
 
 Scene::Scene()
@@ -315,7 +316,24 @@ void Scene::Load(ifstream& _file)
 		//skip }
 		_file.ignore(256, '\n');
 		cout << "}\n";
+
+
 	}
+
+	//load in world
+	_file >> dummy >> m_numDungeon; _file.ignore(256, '\n');
+	cout << "DUNGEON: " << m_numDungeon << endl;
+	for (int i = 0; i < m_numDungeon; i++)
+	{
+		//skip {
+		_file.ignore(256, '\n');
+		cout << "{\n";
+
+		string type;
+		_file >> dummy >> type; _file.ignore(256, '\n');
+		World* newDungeon = 
+	}
+	
 
 }
 

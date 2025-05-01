@@ -170,6 +170,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="World.h" />
+    <ClInclude Include="WorldFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AIMesh.cpp" />
@@ -200,6 +201,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="World.cpp" />
+    <ClCompile Include="WorldFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="manifest.txt" />

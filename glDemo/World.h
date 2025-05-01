@@ -9,7 +9,8 @@ class World
 protected:
 	string m_name;
 	
-	GameObject m_worldMatrix[5][5];
+	string m_objectTypes[5][5];
+	GameObject m_gameObjects[5][5];
 public:
 	World();
 	~World();
