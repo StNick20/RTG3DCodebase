@@ -144,6 +144,17 @@ Shader* Scene::GetShader(string _shaderName)
 	return nullptr;
 }
 
+World* Scene::GetWorld(string _WorldName)
+{
+	for (list<World*>::iterator it = m_Dungeons.begin(); it != m_Dungeons.end(); it++)
+	{
+		if ((*it)->GetName() == _WorldName)
+		{
+			return (*it);
+		}
+	}
+}
+
 
 //Render Everything
 void Scene::Render()

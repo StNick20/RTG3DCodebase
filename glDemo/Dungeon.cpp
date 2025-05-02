@@ -19,9 +19,11 @@ Dungeon::~Dungeon()
 
 }
 
-void Dungeon::Init()
+void Dungeon::Init(Scene* scene)
 {
-
+	for(int i = 0; i <= 4; i++)
+		for(int ii = 0; ii<= 4; ii++)
+			m_Parts[i][ii] = scene->GetWorld(m_objectTypes[i][ii]);
 }
 
 void Dungeon::Load(ifstream& _file)

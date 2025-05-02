@@ -1,5 +1,6 @@
 #pragma once
 #include "World.h"
+#include "Scene.h"
 
 class Dungeon : public World
 {
@@ -9,7 +10,7 @@ public:
 	Dungeon();
 	~Dungeon();
 
-	void Init() override;
+	void Init(Scene* scene) override;
 	void Load(ifstream& _file) override;
 
 

@@ -3,6 +3,7 @@
 #include "core.h"
 
 class GameObject;
+class Scene;
 
 class World
 {
@@ -20,8 +21,10 @@ public:
 	~World();
 
 	//initialize world using loaded file
-	virtual void Init();
+	virtual void Init(Scene* scene);
 
 	//load details from a file
 	virtual void Load(ifstream& _file);
+
+	string GetName() { return m_name; }
 };

@@ -60,7 +60,6 @@ void GameObject::Init(Scene* _scene, float _Width, float _Height)
 
 void GameObject::Move(glm::vec3 _pos)
 {
-
 	m_pos = _pos;
 }
 

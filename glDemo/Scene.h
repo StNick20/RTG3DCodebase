@@ -34,6 +34,7 @@ public:
 	Texture* GetTexture(string _texName);
 	Model* GetModel(string _modelName);
 	Shader* GetShader(string _shaderName);
+	World* GetWorld(string _worldName);
 	std::list<Collider*> GetColliders() { return m_Colliders; }
 
 	//Render Everything
