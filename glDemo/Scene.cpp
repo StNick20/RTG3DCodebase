@@ -11,6 +11,7 @@
 #include "GameObjectFactory.h"
 #include "Collider.h"
 #include "World.h"
+#include "WorldFactory.h"
 #include <assert.h>
 
 Scene::Scene()
@@ -331,10 +332,15 @@ void Scene::Load(ifstream& _file)
 
 		string type;
 		_file >> dummy >> type; _file.ignore(256, '\n');
-		World* newDungeon = 
-	}
-	
+		World* newDungeon = WorldFactory::makeNewWorld(type);	
+		newDungeon->Load(_file);
 
+		m_Dungeons.push_back(newDungeon);
+
+		//skip }
+		_file.ignore(256, '\n');
+		cout << "}\n";
+	}
 }
 
 void Scene::Init(float _Width, float _Height)

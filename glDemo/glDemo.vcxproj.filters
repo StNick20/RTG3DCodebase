@@ -135,6 +135,9 @@
     <ClInclude Include="WorldFactory.h">
       <Filter>Scene Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Dungeon.h">
+      <Filter>Scene Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -222,6 +225,9 @@
       <Filter>Scene Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WorldFactory.cpp">
+      <Filter>Scene Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon.cpp">
       <Filter>Scene Source Files</Filter>
     </ClCompile>
   </ItemGroup>

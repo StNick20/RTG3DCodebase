@@ -5,6 +5,6 @@ class World;
 
 class WorldFactory
 {
-protected:
-	World* makeNew(string type);
+public:
+	static World* makeNewWorld(string type);
 };
