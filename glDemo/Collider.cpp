@@ -22,6 +22,7 @@ void Collider::Init(Scene* _scene, glm::vec3 _pos, glm::vec3 _scale)
 
 bool Collider::CheckCollision(Collider* _other)
 {
+	return false;
 	if(_other == nullptr)
 		return false;
 

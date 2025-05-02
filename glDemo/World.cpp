@@ -13,11 +13,22 @@ World::~World()
 
 }
 
-void World::Init(Scene* scene)
+void World::Init(Scene* scene, float _width, float _height)
 {
 	for (int i = 0; i <= 4; i++)
+	{
 		for (int ii = 0; ii <= 4; ii++)
-			m_gameObjects[i][ii] = scene->GetGameObject(m_objectTypes[i][ii]);
+		{
+			if (m_objectTypes[i][ii] != "NULL")
+			{
+				m_gameObjects[i][ii] = scene->GetGameObject(m_objectTypes[i][ii]);
+				m_gameObjects[i][ii]->Init(scene, _width, _height);
+				scene->AddGameObject(m_gameObjects[i][ii]);//add to the scene so it can be rendered
+			}
+			else
+				m_gameObjects[i][ii] = nullptr;
+		}
+	}
 
 	//set the positions of the objects
 	for (int i = 0; i <= 4; i++)
@@ -26,7 +37,7 @@ void World::Init(Scene* scene)
 		{
 			if (m_gameObjects[i][ii] != nullptr)
 			{
-				m_gameObjects[i][ii]->SetPos(glm::vec3(i * 3, 0, ii * 3));
+				m_gameObjects[i][ii]->SetPos(glm::vec3(i * 2, 0, ii * 2));
 			}
 		}
 	}

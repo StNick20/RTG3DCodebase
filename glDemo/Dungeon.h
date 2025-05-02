@@ -10,7 +10,7 @@ public:
 	Dungeon();
 	~Dungeon();
 
-	void Init(Scene* scene) override;
+	void Init(Scene* scene, float _width, float _height) override;
 	void Load(ifstream& _file) override;
 
 

@@ -21,7 +21,7 @@ public:
 	~World();
 
 	//initialize world using loaded file
-	virtual void Init(Scene* scene);
+	virtual void Init(Scene* scene, float _width, float _height);
 
 	//load details from a file
 	virtual void Load(ifstream& _file);

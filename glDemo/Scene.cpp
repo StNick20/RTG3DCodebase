@@ -51,6 +51,7 @@ void Scene::Update(float _dt, float _screenWidth, float _screenHeight)
 void Scene::AddGameObject(GameObject* _new)
 {
 	m_GameObjects.push_back(_new);
+	m_numGameObjects++;
 }
 
 void Scene::AddCamera(Camera* _new)
@@ -385,6 +386,11 @@ void Scene::Init(float _Width, float _Height)
 	{
 		(*it)->Init(this, _Width, _Height);
 		(*it)->GetCollider()->Init(this, (*it)->GetPos(), (*it)->GetScale());
+	}
+#
+	for (list<World*>::iterator it = m_Dungeons.begin(); it != m_Dungeons.end(); it++)
+	{
+		(*it)->Init(this, _Width, _Height);
 	}
 
 }

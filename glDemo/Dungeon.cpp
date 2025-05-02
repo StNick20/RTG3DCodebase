@@ -19,7 +19,7 @@ Dungeon::~Dungeon()
 
 }
 
-void Dungeon::Init(Scene* scene)
+void Dungeon::Init(Scene* scene, float _width, float _height)
 {
 	for(int i = 0; i <= 4; i++)
 		for(int ii = 0; ii<= 4; ii++)

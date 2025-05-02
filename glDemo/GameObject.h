@@ -29,7 +29,7 @@ public:
 
 	//various getters and setters
 	void SetName(string _name) { m_name = _name; }
-	void SetPos(glm::vec3 pos) { m_pos = pos; }
+	void SetPos(glm::vec3 pos) { m_pos.x = pos.x; m_pos.y = pos.y; m_pos.z = pos.z; }
 	string GetName() { return m_name; }
 	GLuint GetShaderProg() { return m_ShaderProg; }
 	glm::vec3 GetPos() { return m_pos; }
