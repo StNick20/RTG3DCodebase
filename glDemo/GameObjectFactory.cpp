@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include "ExampleGO.h"
 #include "GOCam.h"
+#include "World.h"
+#include "Dungeon.h"
 #include <assert.h>
 
 using std::string;
@@ -20,6 +22,14 @@ GameObject* GameObjectFactory::makeNewGO(string _type)
 	else if (_type == "GOCAM")
 	{
 		return new GOCam();
+	}
+	else if (_type == "WORLD")
+	{
+		return new World();
+	}
+	else if (_type == "DUNGEON")
+	{
+		return new Dungeon();
 	}
 	else
 	{

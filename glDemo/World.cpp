@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "Scene.h"
 #include "GameObjectFactory.h"
+#include "ExampleGO.h"
 
 World::World()
 {
@@ -13,6 +14,20 @@ World::~World()
 
 }
 
+void World::Tick(float _dt)
+{
+	for (int i = 0; i < 5; i++)
+	{
+		for (int ii = 0; ii < 5; ii++)
+		{
+			if (m_gameObjects[i][ii] != nullptr)
+			{
+				m_gameObjects[i][ii]->Tick(_dt);
+			}
+		}
+	}	
+}
+
 void World::Init(Scene* scene, float _width, float _height)
 {
 	for (int i = 0; i <= 4; i++)
@@ -21,9 +36,8 @@ void World::Init(Scene* scene, float _width, float _height)
 		{
 			if (m_objectTypes[i][ii] != "NULL")
 			{
-				m_gameObjects[i][ii] = scene->GetGameObject(m_objectTypes[i][ii]);
+				m_gameObjects[i][ii] = new GameObject(scene->GetGameObject(m_objectTypes[i][ii]));
 				m_gameObjects[i][ii]->Init(scene, _width, _height);
-				scene->AddGameObject(m_gameObjects[i][ii]);//add to the scene so it can be rendered
 			}
 			else
 				m_gameObjects[i][ii] = nullptr;

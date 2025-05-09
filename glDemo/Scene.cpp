@@ -347,8 +347,6 @@ void Scene::Load(ifstream& _file)
 		World* newDungeon = WorldFactory::makeNewWorld(type);	
 		newDungeon->Load(_file);
 
-		m_Dungeons.push_back(newDungeon);
-
 		//skip }
 		_file.ignore(256, '\n');
 		cout << "}\n";

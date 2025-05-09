@@ -8,6 +8,15 @@
 
 ExampleGO::ExampleGO()
 {
+
+}
+
+ExampleGO::ExampleGO(ExampleGO* _object)
+{
+	GameObject::GameObject(_object);
+	m_ShaderProg = _object->m_ShaderProg;
+	m_texture = _object->m_texture;
+	m_model = _object->m_model;
 }
 
 ExampleGO::~ExampleGO()

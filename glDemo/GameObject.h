@@ -15,6 +15,7 @@ class GameObject
 {
 public:
 	GameObject();
+	GameObject(GameObject* _object);
 	virtual ~GameObject();
 
 	//load me from the file
@@ -65,4 +66,3 @@ protected:
 
 	Collider* m_collider;
 };
-

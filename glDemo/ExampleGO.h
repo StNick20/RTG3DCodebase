@@ -8,6 +8,7 @@ class ExampleGO : public GameObject
 {
 public:
 	ExampleGO();
+	ExampleGO(ExampleGO*);
 	~ExampleGO();
 
 	//load me from the file

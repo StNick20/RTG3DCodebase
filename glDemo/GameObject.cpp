@@ -13,6 +13,15 @@ GameObject::GameObject()
 	m_collider = new Collider;
 }
 
+GameObject::GameObject(GameObject* _object)
+{
+	m_type = "GAMEOBJECT";
+	m_pos = _object->m_pos;
+	m_rot = _object->m_rot;
+	m_scale = _object->m_scale;
+	m_rot_incr = _object->m_rot_incr;
+}
+
 GameObject::~GameObject()
 {
 }

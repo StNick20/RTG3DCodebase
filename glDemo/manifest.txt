@@ -146,7 +146,7 @@ VERTFILE: Assets\\Shaders\\texture-directional.vert
 FRAGFILE: Assets\\Shaders\\texture-directional.frag
 }
 
-GAMEOBJECTS 4
+GAMEOBJECTS 13
 {
 TYPE: GOCAM
 NAME: BEAST
@@ -193,8 +193,6 @@ MODEL: CUBE
 TEXTURE: ROCK
 SHADER: TEXDIR
 }
-
-DUNGEON 9
 {
 TYPE: WORLD
 NAME: DOWNLEFT

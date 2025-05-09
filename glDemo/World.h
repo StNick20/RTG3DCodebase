@@ -1,11 +1,11 @@
 #pragma once
 
 #include "core.h"
+#include "GameObject.h"
 
-class GameObject;
 class Scene;
 
-class World
+class World : public GameObject
 {
 protected:
 	string m_name;
@@ -23,6 +23,7 @@ public:
 	//initialize world using loaded file
 	virtual void Init(Scene* scene, float _width, float _height);
 
+	virtual void Tick(float _dt);
 	//load details from a file
 	virtual void Load(ifstream& _file);
 

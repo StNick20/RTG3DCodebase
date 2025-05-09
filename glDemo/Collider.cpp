@@ -47,7 +47,7 @@ bool Collider::CheckCollision(Collider* _other)
 
 void Collider::SetPos(glm::vec3 _pos)
 {
-	m_pos = _pos;
+	//m_pos = _pos;
 }
 
 bool Collider::checkColliders()
