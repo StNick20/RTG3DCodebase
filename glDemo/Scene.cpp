@@ -333,24 +333,24 @@ void Scene::Load(ifstream& _file)
 
 	}
 
-	//load in world
-	_file >> dummy >> m_numDungeon; _file.ignore(256, '\n');
-	cout << "DUNGEON: " << m_numDungeon << endl;
-	for (int i = 0; i < m_numDungeon; i++)
-	{
-		//skip {
-		_file.ignore(256, '\n');
-		cout << "{\n";
+	////load in world
+	//_file >> dummy >> m_numDungeon; _file.ignore(256, '\n');
+	//cout << "DUNGEON: " << m_numDungeon << endl;
+	//for (int i = 0; i < m_numDungeon; i++)
+	//{
+	//	//skip {
+	//	_file.ignore(256, '\n');
+	//	cout << "{\n";
 
-		string type;
-		_file >> dummy >> type; _file.ignore(256, '\n');
-		World* newDungeon = WorldFactory::makeNewWorld(type);	
-		newDungeon->Load(_file);
+	//	string type;
+	//	_file >> dummy >> type; _file.ignore(256, '\n');
+	//	World* newDungeon = WorldFactory::makeNewWorld(type);	
+	//	newDungeon->Load(_file);
 
-		//skip }
-		_file.ignore(256, '\n');
-		cout << "}\n";
-	}
+	//	//skip }
+	//	_file.ignore(256, '\n');
+	//	cout << "}\n";
+	//}
 }
 
 void Scene::Init(float _Width, float _Height)

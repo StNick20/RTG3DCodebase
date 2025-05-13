@@ -6,7 +6,7 @@
 
 World::World()
 {
-
+	m_pos = glm::vec3(0.0, 0.0, 0.0);
 }
 
 World::~World()
@@ -16,13 +16,20 @@ World::~World()
 
 void World::Tick(float _dt)
 {
+
+}
+
+void World::Render()
+{
 	for (int i = 0; i < 5; i++)
 	{
 		for (int ii = 0; ii < 5; ii++)
 		{
 			if (m_gameObjects[i][ii] != nullptr)
 			{
-				m_gameObjects[i][ii]->Tick(_dt);
+				m_gameObjects[i][ii]->SetPos(m_positions[i][ii]);
+				m_gameObjects[i][ii]->PreRender();
+				m_gameObjects[i][ii]->Render();
 			}
 		}
 	}	
@@ -36,8 +43,7 @@ void World::Init(Scene* scene, float _width, float _height)
 		{
 			if (m_objectTypes[i][ii] != "NULL")
 			{
-				m_gameObjects[i][ii] = new GameObject(scene->GetGameObject(m_objectTypes[i][ii]));
-				m_gameObjects[i][ii]->Init(scene, _width, _height);
+				m_gameObjects[i][ii] = scene->GetGameObject(m_objectTypes[i][ii]);
 			}
 			else
 				m_gameObjects[i][ii] = nullptr;
@@ -51,7 +57,7 @@ void World::Init(Scene* scene, float _width, float _height)
 		{
 			if (m_gameObjects[i][ii] != nullptr)
 			{
-				m_gameObjects[i][ii]->SetPos(glm::vec3(i * 2, 0, ii * 2));
+				m_gameObjects[i][ii]->SetPos(m_pos + glm::vec3(i * 2, 0, ii * 2));
 			}
 		}
 	}
