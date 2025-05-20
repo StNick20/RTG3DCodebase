@@ -76,7 +76,12 @@ AMB: 0.1 0.1 0.1
 DIR: 0.0 1.0 0.0
 }
 
-MODELS 5
+MODELS 7
+{
+TYPE: AI
+NAME: GOLEM
+FILE: Assets\\Golem\\Stone.obj
+}
 {
 TYPE: AI
 NAME: BEAST
@@ -94,6 +99,11 @@ FILE: Assets\\duck\rubber_duck_toy_4k.obj
 }
 {
 TYPE: AI
+NAME: EYEBALL
+FILE: Assets\\Eyeball\\eyeball.obj
+}
+{
+TYPE: AI
 NAME: CUBE
 FILE: Assets\\cube_highpoly.obj
 }
@@ -102,7 +112,12 @@ TYPE: AXES
 NAME: AXES
 }
 
-TEXTURES 6
+TEXTURES 8
+{
+TYPE: FIF_JPEG
+NAME: GOLEM
+FILE: Assets\\Golem\\rough.jpeg
+}
 {
 TYPE: FIF_BMP
 NAME: BEAST
@@ -117,6 +132,11 @@ FILE: Assets\\Textures\\Hodges_G_MountainRock1.jpg
 TYPE: FIF_PNG
 NAME: SHIP
 FILE: Assets\\Textures\\player1_ship.png
+}
+{
+TYPE: FIF_JPEG
+NAME: EYEBALL
+FILE: Assets\\Eyeball\\textures\\Eye_D.jpg
 }
 {
 TYPE: FIF_JPEG
@@ -161,13 +181,13 @@ CAMOFFSET: 0.0 1.0 0.0
 }
 {
 TYPE: EXAMPLE
-NAME: PLANET
+NAME: GOLEM
 POS: 4.0 4.0 4.0
 ROT: 0.0 0.0 0.0 
-SCALE: 1.0 1.0 1.0
-ROTINC: 0.0 0.2 0.0
-MODEL: SPHERE
-TEXTURE: ROCK
+SCALE: 1.0 1.0 3.0
+ROTINC: 0.0 0.0 0.0
+MODEL: GOLEM
+TEXTURE: GOLEM
 SHADER: TEXDIR
 }
 {

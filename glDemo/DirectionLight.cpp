@@ -61,6 +61,6 @@ void DirectionLight::Tick(float _dt)
 	m_col.y = clamp(m_col.y, 0.1f, 1.0f);
 	m_col.z = clamp(m_col.z, 0.1f, 1.0f);
 
-	//std::cout << m_col.x << ", " << m_col.y << ", " << m_col.z << endl;
-	//std::cout << (time / 12) << endl;
+	std::cout << m_col.x << ", " << m_col.y << ", " << m_col.z << endl;
+	std::cout << (time / 12) << endl;
 }

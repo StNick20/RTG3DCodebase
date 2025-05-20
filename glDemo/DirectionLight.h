@@ -30,7 +30,7 @@ protected:
 	vec3 m_OriginalCol;
 
 	//set max time for day night cycle too 10 minutes
-	const float maxTime = 600;
+	const float maxTime = 60;
 	const float halfTime = maxTime / 2.0f;
 };
 

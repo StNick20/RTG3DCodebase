@@ -28,7 +28,6 @@ void World::Render()
 			if (m_gameObjects[i][ii] != nullptr)
 			{
 				m_gameObjects[i][ii]->SetPos(m_positions[i][ii]);
-				m_gameObjects[i][ii]->PreRender();
 				m_gameObjects[i][ii]->Render();
 			}
 		}
